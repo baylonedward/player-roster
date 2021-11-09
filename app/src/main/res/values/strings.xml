@@ -3,4 +3,7 @@
     <string name="title_teams">Teams</string>
     <string name="title_players">Players</string>
     <string name="title_trainings">Trainings</string>
+
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>

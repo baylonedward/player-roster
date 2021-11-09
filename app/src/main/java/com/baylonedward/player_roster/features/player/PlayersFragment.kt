@@ -1,4 +1,4 @@
-package com.baylonedward.player_roster.ui.player
+package com.baylonedward.player_roster.features.player
 
 import android.os.Bundle
 import android.view.LayoutInflater

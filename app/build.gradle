@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -61,6 +63,27 @@ dependencies {
      */
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    /**
+     * Hilt-Dagger: Dependency Injection
+     */
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+
+    /**
+     * Hilt-ViewModel
+     */
+    def hiltViewModelVersion = '1.0.0-alpha03'
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltViewModelVersion"
+
+    /**
+     * Android Room - SQLite Library
+     */
+    def android_room = '2.4.0-beta01'
+    implementation "androidx.room:room-ktx:$android_room"
+    implementation "androidx.room:room-runtime:$android_room"
+    kapt "androidx.room:room-compiler:$android_room"
 
     /**
      * Tests Dependencies

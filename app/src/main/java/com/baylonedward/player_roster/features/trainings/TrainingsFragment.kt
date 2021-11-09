@@ -1,4 +1,4 @@
-package com.baylonedward.player_roster.ui.team
+package com.baylonedward.player_roster.features.trainings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.baylonedward.player_roster.databinding.FragmentTeamsBinding
+import com.baylonedward.player_roster.databinding.FragmentTrainingsBinding
 
-class TeamsFragment : Fragment() {
+class TrainingsFragment : Fragment() {
 
-    private lateinit var teamsViewModel: TeamsViewModel
-    private var _binding: FragmentTeamsBinding? = null
+    private lateinit var trainingsViewModel: TrainingsViewModel
+    private var _binding: FragmentTrainingsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,14 +24,14 @@ class TeamsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        teamsViewModel =
-            ViewModelProvider(this)[TeamsViewModel::class.java]
+        trainingsViewModel =
+            ViewModelProvider(this)[TrainingsViewModel::class.java]
 
-        _binding = FragmentTeamsBinding.inflate(inflater, container, false)
+        _binding = FragmentTrainingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        teamsViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textNotifications
+        trainingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

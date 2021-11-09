@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_teams"
-        android:name="com.baylonedward.player_roster.ui.team.TeamsFragment"
+        android:name="com.baylonedward.player_roster.features.team.TeamsFragment"
         android:label="@string/title_teams"
         tools:layout="@layout/fragment_teams" />
 
     <fragment
         android:id="@+id/navigation_players"
-        android:name="com.baylonedward.player_roster.ui.player.PlayersFragment"
+        android:name="com.baylonedward.player_roster.features.player.PlayersFragment"
         android:label="@string/title_players"
         tools:layout="@layout/fragment_players" />
 
     <fragment
         android:id="@+id/navigation_trainings"
-        android:name="com.baylonedward.player_roster.ui.trainings.TrainingsFragment"
+        android:name="com.baylonedward.player_roster.features.trainings.TrainingsFragment"
         android:label="@string/title_trainings"
         tools:layout="@layout/fragment_trainings" />
 </navigation>

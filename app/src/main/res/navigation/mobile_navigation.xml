@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_teams">
+
+    <fragment
+        android:id="@+id/navigation_teams"
+        android:name="com.baylonedward.player_roster.ui.team.TeamsFragment"
+        android:label="@string/title_teams"
+        tools:layout="@layout/fragment_teams" />
+
+    <fragment
+        android:id="@+id/navigation_players"
+        android:name="com.baylonedward.player_roster.ui.player.PlayersFragment"
+        android:label="@string/title_players"
+        tools:layout="@layout/fragment_players" />
+
+    <fragment
+        android:id="@+id/navigation_trainings"
+        android:name="com.baylonedward.player_roster.ui.trainings.TrainingsFragment"
+        android:label="@string/title_trainings"
+        tools:layout="@layout/fragment_trainings" />
+</navigation>

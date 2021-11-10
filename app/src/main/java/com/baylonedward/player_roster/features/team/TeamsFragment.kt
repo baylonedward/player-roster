@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.baylonedward.player_roster.data.local.room.entity.Team
 import com.baylonedward.player_roster.databinding.FragmentTeamsBinding
+import com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment
 import com.baylonedward.player_roster.utilities.State
 import com.baylonedward.player_roster.utilities.base.BaseFragment
 import com.baylonedward.player_roster.utilities.ui.BasicListAdapter
@@ -21,6 +22,7 @@ import kotlinx.coroutines.launch
 class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
     private val viewModel by viewModels<TeamsViewModel>()
     private val teamsListAdapter by lazy { BasicListAdapter(viewModel) }
+    private val addTeamDialog by lazy { AddTeamDialogFragment(requireActivity().supportFragmentManager) }
 
     override fun setBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentTeamsBinding {
         return FragmentTeamsBinding.inflate(layoutInflater)
@@ -45,6 +47,10 @@ class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
     private fun setUI() {
         // teams list adapter
         binding.listView.adapter = teamsListAdapter
+        // add button
+        binding.buttonAdd.setOnClickListener {
+            addTeamDialog.show()
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

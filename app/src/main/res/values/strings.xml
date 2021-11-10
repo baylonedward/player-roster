@@ -6,4 +6,12 @@
 
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+
+    <!-- Team -->
+    <string name="new_team">New Team</string>
+    <string name="add_new_team">Add New Team</string>
+    <string name="name">Name</string>
+    <string name="size">Size</string>
+    <string name="city">City</string>
+    <string name="add">Add</string>
 </resources>

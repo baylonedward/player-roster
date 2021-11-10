@@ -5,10 +5,7 @@ import com.baylonedward.player_roster.data.local.room.entity.Team
 import com.baylonedward.player_roster.di.CoroutinesDispatchersModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,6 +25,23 @@ class TeamsRepository @Inject constructor(
     fun allTeams(): Flow<List<Team>> = channelFlow {
         teamDao.all().collect { send(it) }
     }.flowOn(dispatcher)
+
+    suspend fun addTeam(team: Team): Boolean {
+        return withContext(dispatcher) {
+            try {
+                // check if same name and city exist
+                val exist =
+                    allTeams().firstOrNull()?.find { it.name == team.name && it.city == team.city }
+                if (exist != null) return@withContext false
+
+                teamDao.insert(team)
+                true
+            } catch (e: Exception) {
+                println("Add Team: $e")
+                false
+            }
+        }
+    }
 
     suspend fun addTeams(list: List<Team>): Boolean {
         return withContext(dispatcher) {

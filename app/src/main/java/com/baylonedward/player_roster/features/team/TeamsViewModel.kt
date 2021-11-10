@@ -65,13 +65,16 @@ class TeamsViewModel @Inject constructor(
     }
 
     private suspend fun createDummyTeams() {
-        val list = listOf(
-            Team.newTeam("Team 1"),
-            Team.newTeam("Team 2"),
-            Team.newTeam("Team 3"),
-            Team.newTeam("Team 4"),
-            Team.newTeam("Team 5")
-        )
+        val cities = listOf("Davao", "Cebu", "Caloocan", "Makati", "Mandaluyong", "Laguna")
+        val list = ArrayList<Team>().apply {
+            for (i in 1..10) {
+                val team = Team.newTeam(
+                    name = "Team $i",
+                    city = cities.random()
+                )
+                this.add(team)
+            }
+        }
         teamsRepository.addTeams(list)
     }
 

@@ -13,4 +13,6 @@ import kotlinx.coroutines.flow.Flow
 interface TeamDao: BaseDao<Team> {
     @Query("SELECT * FROM Team")
     fun all(): Flow<List<Team>>
+
+
 }

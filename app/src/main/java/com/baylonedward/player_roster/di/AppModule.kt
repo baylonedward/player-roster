@@ -3,6 +3,7 @@ package com.baylonedward.player_roster.di
 import android.content.Context
 import com.baylonedward.player_roster.MainApp
 import com.baylonedward.player_roster.data.local.room.LocalDatabase
+import com.baylonedward.player_roster.data.local.room.dao.PlayerDao
 import com.baylonedward.player_roster.data.local.room.dao.TeamDao
 import com.baylonedward.player_roster.data.repository.SessionRepository
 import dagger.Module
@@ -29,6 +30,12 @@ class AppModule {
     @Singleton
     fun provideTeamDao(db: LocalDatabase): TeamDao {
         return db.teamDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providePlayerDao(db: LocalDatabase): PlayerDao {
+        return db.playerDao()
     }
 
     @Provides

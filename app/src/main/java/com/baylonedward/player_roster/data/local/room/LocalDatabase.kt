@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.baylonedward.player_roster.data.local.room.dao.PlayerDao
 import com.baylonedward.player_roster.data.local.room.dao.TeamDao
-import com.baylonedward.player_roster.data.local.room.entity.Team
+import com.baylonedward.player_roster.data.local.room.entity.player.Player
+import com.baylonedward.player_roster.data.local.room.entity.team.Team
 
 /**
  * Created by: ebaylon.
@@ -13,13 +15,16 @@ import com.baylonedward.player_roster.data.local.room.entity.Team
  */
 
 @Database(
-  entities = [Team::class],
-  version = 2,
+  entities = [Team::class, Player::class],
+  version = 3,
   exportSchema = false
 )
 abstract class LocalDatabase : RoomDatabase() {
   // team dao
   abstract fun teamDao(): TeamDao
+
+  // player dao
+  abstract fun playerDao(): PlayerDao
 
   companion object {
     @Volatile

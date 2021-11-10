@@ -1,7 +1,7 @@
 package com.baylonedward.player_roster.data.repository
 
 import com.baylonedward.player_roster.data.local.room.dao.TeamDao
-import com.baylonedward.player_roster.data.local.room.entity.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.Team
 import com.baylonedward.player_roster.di.CoroutinesDispatchersModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,6 +25,17 @@ class TeamsRepository @Inject constructor(
     fun allTeams(): Flow<List<Team>> = channelFlow {
         teamDao.all().collect { send(it) }
     }.flowOn(dispatcher)
+
+    suspend fun availableTeams(): List<Team>? {
+        return teamDao.all()
+            .map { teams ->
+                teams.filter {
+                    it.size > teamDao.teamAndPlayers(it.id).players.size
+                }
+            }
+            .flowOn(dispatcher)
+            .firstOrNull()
+    }
 
     suspend fun addTeam(team: Team): Boolean {
         return withContext(dispatcher) {

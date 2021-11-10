@@ -1,4 +1,4 @@
-package com.baylonedward.player_roster.data.local.room.entity
+package com.baylonedward.player_roster.data.local.room.entity.team
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -15,6 +15,10 @@ data class Team(
     val size: Int,
     val city: String
 ) {
+
+    override fun toString(): String {
+        return name
+    }
 
     companion object {
         fun newTeam(name: String, size: Int = 15, city: String): Team {

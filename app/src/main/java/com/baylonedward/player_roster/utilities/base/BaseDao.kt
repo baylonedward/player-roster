@@ -1,4 +1,4 @@
-package com.baylonedward.player_roster.data.local.room.dao
+package com.baylonedward.player_roster.utilities.base
 
 import androidx.annotation.Keep
 import androidx.room.Delete

@@ -104,9 +104,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_default"
-            android:layout_marginBottom="16dp"
             android:text="@string/cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonAdd"
             app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
             app:layout_constraintTop_toTopOf="@+id/buttonAdd"
             app:layout_constraintVertical_bias="0.0" />

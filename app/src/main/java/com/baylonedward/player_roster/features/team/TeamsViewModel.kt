@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.baylonedward.player_roster.data.local.room.entity.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.Team
 import com.baylonedward.player_roster.data.repository.SessionRepository
 import com.baylonedward.player_roster.data.repository.TeamsRepository
 import com.baylonedward.player_roster.utilities.SingleLiveData
@@ -22,8 +22,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class TeamsViewModel @Inject constructor(
-    private val teamsRepository: TeamsRepository,
-    private val sessionRepository: SessionRepository
+    private val teamsRepository: TeamsRepository
 ) : ViewModel(), BasicListItemInterface {
     // fragment action
     private val _fragmentAction = SingleLiveData<TeamsFragment.Actions>(null)
@@ -35,14 +34,6 @@ class TeamsViewModel @Inject constructor(
     // teams list state
     private val _teamsListState = MutableLiveData<State<List<Team>>>(null)
     val teamsListState: LiveData<State<List<Team>>> = _teamsListState
-
-
-    init {
-        if (sessionRepository.firsTime) {
-            viewModelScope.launch { createDummyTeams() }
-            sessionRepository.firsTime = false
-        }
-    }
 
     /**
      * [BasicListItemInterface] methods for list of teams

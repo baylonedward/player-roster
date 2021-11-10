@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.baylonedward.player_roster.data.local.room.entity.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.Team
 import com.baylonedward.player_roster.databinding.FragmentTeamsBinding
 import com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment
 import com.baylonedward.player_roster.utilities.State

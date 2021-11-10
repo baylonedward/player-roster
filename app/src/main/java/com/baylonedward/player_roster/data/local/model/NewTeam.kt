@@ -1,6 +1,6 @@
 package com.baylonedward.player_roster.data.local.model
 
-import com.baylonedward.player_roster.data.local.room.entity.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.Team
 
 /**
  * Created by: ebaylon.

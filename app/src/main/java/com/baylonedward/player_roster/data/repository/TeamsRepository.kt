@@ -2,6 +2,7 @@ package com.baylonedward.player_roster.data.repository
 
 import com.baylonedward.player_roster.data.local.room.dao.TeamDao
 import com.baylonedward.player_roster.data.local.room.entity.team.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.TeamAndPlayers
 import com.baylonedward.player_roster.di.CoroutinesDispatchersModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,9 +27,14 @@ class TeamsRepository @Inject constructor(
         teamDao.all().collect { send(it) }
     }.flowOn(dispatcher)
 
+    fun allTeamsAndPlayers(): Flow<List<TeamAndPlayers>> = channelFlow {
+        teamDao.teamsAndPlayers().collect { send(it) }
+    }.flowOn(dispatcher)
+
     suspend fun availableTeams(): List<Team>? {
         return teamDao.all()
             .map { teams ->
+                // return only teams with available slots based on it's size and current players
                 teams.filter {
                     it.size > teamDao.teamAndPlayers(it.id).players.size
                 }

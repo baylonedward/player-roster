@@ -8,6 +8,7 @@
     <string name="cancel">Cancel</string>
 
     <!-- Team -->
+    <string name="team_info">Team Info</string>
     <string name="new_team">New Team</string>
     <string name="add_new_team">Add New Team</string>
     <string name="name">Name</string>

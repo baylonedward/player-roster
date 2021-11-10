@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.baylonedward.player_roster.data.local.room.entity.team.Team
+import com.baylonedward.player_roster.data.local.room.entity.team.TeamAndPlayers
 import com.baylonedward.player_roster.databinding.FragmentTeamsBinding
 import com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment
 import com.baylonedward.player_roster.utilities.State
@@ -73,13 +74,13 @@ class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
 
             when (action) {
                 is Actions.SelectTeam -> {
-                    // navigate to team info screen
+                    navigationViewModel.teamInfoScreen(teamAndPlayers = action.teamAndPlayers)
                 }
             }
         }
     }
 
     sealed interface Actions {
-        data class SelectTeam(private val team: Team): Actions
+        data class SelectTeam(val teamAndPlayers: TeamAndPlayers): Actions
     }
 }

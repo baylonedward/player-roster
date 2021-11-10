@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.baylonedward.player_roster.databinding.ActivityMainBinding
-import com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment
 import com.baylonedward.player_roster.navigation.NavigationCoordinator
 import com.baylonedward.player_roster.navigation.NavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -58,13 +57,12 @@ class MainActivity : AppCompatActivity() {
                     coordinator.destinationId,
                     coordinator.inclusive
                 )
-                is NavigationCoordinator.DialogScreen -> {
+                is NavigationCoordinator.DialogFragmentScreen -> {
                     coordinator.dialogFragment?.also {
                         it.show()
                     }
                 }
                 else -> {
-                    // for fragments
                     coordinator.destination?.also {
                         navController.navigate(it, coordinator.argsBundle, coordinator.navOptions)
                     }

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import com.baylonedward.player_roster.data.local.room.entity.team.Team
-import com.baylonedward.player_roster.data.local.room.entity.team.TeamPlayers
+import com.baylonedward.player_roster.data.local.room.entity.team.TeamAndPlayers
 import com.baylonedward.player_roster.utilities.base.BaseDao
 import kotlinx.coroutines.flow.Flow
 
@@ -22,5 +22,9 @@ interface TeamDao: BaseDao<Team> {
 
     @Transaction
     @Query("SELECT * FROM Team WHERE id = :teamId")
-    fun teamAndPlayers(teamId: Long): TeamPlayers
+    fun teamAndPlayers(teamId: Long): TeamAndPlayers
+
+    @Transaction
+    @Query("SELECT * FROM Team")
+    fun teamsAndPlayers(): Flow<List<TeamAndPlayers>>
 }

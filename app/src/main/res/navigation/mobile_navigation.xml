@@ -33,6 +33,15 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_team_info"
+        android:name="com.baylonedward.player_roster.features.team.info.TeamInfoFragment"
+        tools:layout="@layout/fragment_team_info">
+        <argument
+            android:name="teamAndPlayers"
+            app:argType="com.baylonedward.player_roster.data.local.room.entity.team.TeamAndPlayers" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_add_team"
         android:name="com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment"
         tools:layout="@layout/fragment_add_team_dialog" />

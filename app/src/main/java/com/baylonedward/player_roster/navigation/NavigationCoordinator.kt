@@ -45,27 +45,22 @@ sealed class NavigationCoordinator(
             get() = null
     }
 
-    data class DialogScreen(
+    data class FragmentScreen(
+        override val navOptions: NavOptions,
+        @IdRes val navIdRes: Int,
+        val bundle: Bundle?
+    ) : NavigationCoordinator(
+        destination = navIdRes,
+        argsBundle = bundle
+    )
+
+    data class DialogFragmentScreen(
         override val navOptions: NavOptions? = null,
         private val _dialogFragment: CustomDialogFragment
-    ): NavigationCoordinator(
+    ) : NavigationCoordinator(
         destination = null,
         dialogFragment = _dialogFragment
     )
-
-    data class PlayerInfoScreen(
-        override val navOptions: NavOptions,
-        private val player: Player
-    ) : NavigationCoordinator(
-        destination = this.navIdRes,
-        argsBundle = PlayerInfoFragmentArgs(player).toBundle()
-    ) {
-        companion object {
-            @IdRes
-            val navIdRes: Int = R.id.navigation_player_info
-        }
-    }
-
 
     companion object {
         fun slideFromRightNavOption(

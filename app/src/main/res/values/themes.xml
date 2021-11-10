@@ -18,6 +18,7 @@
     <style name="Theme.PlayerRoster.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">?attr/colorPrimaryVariant</item>
         <item name="colorOnPrimary">?attr/colorPrimaryVariant</item>
+        <item name="colorControlNormal">@color/white</item>
         <item name="navigationIconTint">?attr/colorOnPrimary</item>
     </style>
 

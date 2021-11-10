@@ -12,7 +12,7 @@ data class TeamPlayers(
     @Embedded val team: Team,
     @Relation(
         parentColumn = "id",
-        entityColumn = "teamId"
+        entityColumn = "team_id"
     )
     val players: List<Player>
 )

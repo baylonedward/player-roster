@@ -17,10 +17,10 @@ data class NewPlayer(
     var gender: Gender? = null,
     var jumpHeight: Double? = null,
     var position: PlayerPosition? = null,
-    var picture: String = "" // will be updated later
+    var picture: String = "", // will be updated later
 ) {
 
-    fun isComplete(): Boolean {
+    private fun isComplete(): Boolean {
         if (name.isNullOrEmpty()) return false
         if (team == null) return false
         if (height == null) return false
@@ -50,13 +50,13 @@ data class NewPlayer(
         return Player(
             id = 0,
             name = name!!,
-            teamId = team!!.id,
             height = height!!,
             weight = weight!!,
             gender = gender!!.title,
             jumpHeight = jumpHeight!!,
             position = position!!.title,
-            picture = picture
+            picture = picture,
+            team = team!!
         )
     }
 

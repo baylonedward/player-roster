@@ -22,4 +22,23 @@
         android:name="com.baylonedward.player_roster.features.trainings.TrainingsFragment"
         android:label="@string/title_trainings"
         tools:layout="@layout/fragment_trainings" />
+
+    <fragment
+        android:id="@+id/navigation_player_info"
+        android:name="com.baylonedward.player_roster.features.player.info.PlayerInfoFragment"
+        tools:layout="@layout/fragment_player_info">
+        <argument
+            android:name="player"
+            app:argType="com.baylonedward.player_roster.data.local.room.entity.player.Player" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_team"
+        android:name="com.baylonedward.player_roster.features.team.add.AddTeamDialogFragment"
+        tools:layout="@layout/fragment_add_team_dialog" />
+
+    <fragment
+        android:id="@+id/navigation_add_player"
+        android:name="com.baylonedward.player_roster.features.player.add.AddPlayerDialogFragment"
+        tools:layout="@layout/fragment_add_player_dialog" />
 </navigation>

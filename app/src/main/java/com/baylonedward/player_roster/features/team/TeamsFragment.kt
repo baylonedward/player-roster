@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
     private val viewModel by viewModels<TeamsViewModel>()
     private val teamsListAdapter by lazy { BasicListAdapter(viewModel) }
-    private val addTeamDialog by lazy { AddTeamDialogFragment(requireActivity().supportFragmentManager) }
 
     override fun setBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentTeamsBinding {
         return FragmentTeamsBinding.inflate(layoutInflater)
@@ -49,7 +48,7 @@ class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
         binding.listView.adapter = teamsListAdapter
         // add button
         binding.buttonAdd.setOnClickListener {
-            addTeamDialog.show()
+            navigationViewModel.addTeamScreen(requireActivity().supportFragmentManager)
         }
     }
 

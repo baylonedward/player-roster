@@ -106,6 +106,6 @@ class AddTeamDialogFragment(supportFragmentManager: FragmentManager) :
     }
 
     companion object {
-        private val TAG = AddTeamDialogFragment::class.java.name
+        val TAG = AddTeamDialogFragment::class.java.name
     }
 }

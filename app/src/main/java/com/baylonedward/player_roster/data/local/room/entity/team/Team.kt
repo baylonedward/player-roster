@@ -1,12 +1,15 @@
 package com.baylonedward.player_roster.data.local.room.entity.team
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
 /**
  * Created by: ebaylon.
  * Created on: 09/11/2021.
  */
+@Parcelize
 @Entity
 data class Team(
     @PrimaryKey(autoGenerate = true)
@@ -14,7 +17,7 @@ data class Team(
     val name: String,
     val size: Int,
     val city: String
-) {
+): Parcelable {
 
     override fun toString(): String {
         return name

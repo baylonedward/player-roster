@@ -16,7 +16,7 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseDialogFragment<FragmentBinding : ViewBinding>(
     private val supportFragmentManager: FragmentManager,
     private val fragmentTag: String
-) : DialogFragment() {
+) : CustomDialogFragment() {
     private var _binding: FragmentBinding? = null
     protected val binding get() = _binding!!
 
@@ -38,6 +38,10 @@ abstract class BaseDialogFragment<FragmentBinding : ViewBinding>(
         if (this.dialog?.isShowing == true) super.dismiss()
     }
 
+    override fun show() {
+        show(supportFragmentManager, fragmentTag)
+    }
+
     abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentBinding
 
     protected fun showToastMessage(message: String?) {
@@ -46,7 +50,4 @@ abstract class BaseDialogFragment<FragmentBinding : ViewBinding>(
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    fun show() {
-        show(supportFragmentManager, fragmentTag)
-    }
 }

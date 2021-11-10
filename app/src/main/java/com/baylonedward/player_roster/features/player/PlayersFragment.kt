@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 class PlayersFragment : BaseFragment<FragmentPlayersBinding>() {
     private val viewModel by viewModels<PlayersViewModel>()
     private val playersListAdapter by lazy { BasicListAdapter(viewModel) }
-    private val addPlayerDialog by lazy { AddPlayerDialogFragment(requireActivity().supportFragmentManager) }
 
     override fun setBinding(
         inflater: LayoutInflater,
@@ -53,7 +52,7 @@ class PlayersFragment : BaseFragment<FragmentPlayersBinding>() {
         binding.listView.adapter = playersListAdapter
         // add button
         binding.buttonAdd.setOnClickListener {
-            addPlayerDialog.show()
+            navigationViewModel.addPlayerScreen(requireActivity().supportFragmentManager)
         }
     }
 
@@ -78,7 +77,7 @@ class PlayersFragment : BaseFragment<FragmentPlayersBinding>() {
 
             when (action) {
                 is Actions.SelectPlayer -> {
-                    // navigate to player info screen
+                    navigationViewModel.playerInfoScreen(player = action.player)
                 }
             }
         }
@@ -86,6 +85,6 @@ class PlayersFragment : BaseFragment<FragmentPlayersBinding>() {
 
 
     sealed interface Actions {
-        data class SelectPlayer(private val player: Player): Actions
+        data class SelectPlayer(val player: Player) : Actions
     }
 }

@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
 import com.baylonedward.player_roster.R
+import com.baylonedward.player_roster.navigation.NavigationViewModel
 import dagger.hilt.android.WithFragmentBindings
 
 /**
@@ -17,8 +19,13 @@ import dagger.hilt.android.WithFragmentBindings
  */
 @WithFragmentBindings
 abstract class BaseFragment<FragmentBinding : ViewBinding> : Fragment() {
+
+    // view binding
     private var _binding: FragmentBinding? = null
     protected val binding get() = _binding!!
+
+    // navigation
+    protected val navigationViewModel by activityViewModels<NavigationViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

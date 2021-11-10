@@ -16,7 +16,7 @@ import com.baylonedward.player_roster.data.local.room.entity.team.Team
 
 @Database(
   entities = [Team::class, Player::class],
-  version = 3,
+  version = 5,
   exportSchema = false
 )
 abstract class LocalDatabase : RoomDatabase() {
